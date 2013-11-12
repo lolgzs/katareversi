@@ -3,18 +3,20 @@ public class Reversi {
 	public String printLegalMoves(String input) {
 		String[] inputRows = input.split("\n");
 		String outputRows = "";
-		String turn = "B";
-		if (this.isTurnForWhite(input))
-			turn = "W";
 		
 		for (int i = 0; i < inputRows.length - 1; i++) {
 			outputRows = outputRows + this.injectLegalMovesForRow(inputRows[i]) + "\n";
 		}
 		
-		return outputRows + turn;
+		return outputRows + this.getTurn(input);
 	}
 
 	
+	private String getTurn(String input) {
+		return String.valueOf(input.charAt(input.length() - 1));
+	}
+
+
 	private String injectLegalMovesForRow(String row) {
 		Boolean shouldAddLegalMove = false;
 		String resultRow = "";
@@ -34,11 +36,6 @@ public class Reversi {
 			resultRow = resultRow + resultCell.toString();
 		}
 		return resultRow;
-	}
-
-
-	private boolean isTurnForWhite(String input) {
-		return input.charAt(input.length() - 1) == 'W';
 	}
 
 }
