@@ -1,15 +1,12 @@
 
 public class Reversi {
 	public String printLegalMoves(String input) {
-		String[] inputRows = input.split("\n");
+		Rows rows = new Rows(input);
 		ReversiGUI gui = new ReversiGUI();
 		
-		for (int i = 0; i < inputRows.length - 1; i++) {
-			Row row = new Row(inputRows[i]);
-			row.printLegalMovesOn(gui);
-		}
-		
+		rows.printLegalMovesOn(gui);
 		gui.appendTurn(this.getTurn(input));
+		
 		return gui.toString();
 	}
 
