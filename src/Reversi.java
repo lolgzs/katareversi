@@ -6,7 +6,7 @@ public class Reversi {
 		
 		for (int i = 0; i < inputRows.length - 1; i++) {
 			Row row = new Row(inputRows[i]);
-			row.printOn(gui);
+			row.printLegalMovesOn(gui);
 		}
 		
 		gui.appendTurn(this.getTurn(input));

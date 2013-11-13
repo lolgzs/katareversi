@@ -7,7 +7,7 @@ public class Row {
 		this.inputRow = row;
 	}
 
-	public void printOn(ReversiGUI gui) {
+	public void printLegalMovesOn(ReversiGUI gui) {
 		Boolean shouldAddLegalMove = false;
 		
 		for (int i = 0; i < this.inputRow.length(); i++) {
