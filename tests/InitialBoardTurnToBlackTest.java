@@ -67,6 +67,14 @@ public class InitialBoardTurnToBlackTest {
         		
         		{ 	"..WB....\nW",
         			"..WB0...\nW"
+        		},
+        		
+        		{ 	"..WBB...\nW",
+        			"..WBB0..\nW"
+        		},
+        		
+        		{ 	"WB.WWB..\nW",
+        			"WB0WWB0.\nW"
         		}
            });
     }
