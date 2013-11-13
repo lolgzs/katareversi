@@ -3,6 +3,7 @@ public class Cell {
 
 	private Character cell;
 	private Cell previousCell;
+	private Cell nextCell;
 
 	public Cell(Character cell) {
 		this.cell = cell;
@@ -11,6 +12,8 @@ public class Cell {
 	public Cell(Character cell, Cell previousCell) {
 		this.cell = cell;
 		this.previousCell = previousCell;
+		if (previousCell != null)
+			previousCell.nextCell = this;
 	}
 
 	public void printLegalMoveOn(ReversiGUI gui) {		
@@ -23,7 +26,8 @@ public class Cell {
 	}
 
 	private boolean shouldAddLegalMove() {
-		return this.previousCellIs('B') && this.previousCellsContains('W');
+		return (this.previousCellIs('B') && this.previousCellsContains('W'))
+			|| (this.nextCellIs('B') && this.nextCellsContains('W'));
 	}
 
 	private boolean isEmpty() {
@@ -42,6 +46,20 @@ public class Cell {
 		if (null == this.previousCell)
 			return false;
 		return this.previousCell.is(c);
+	}
+	
+	private boolean nextCellsContains(char c) {
+		if (null == this.nextCell)
+			return false;
+		if (this.nextCellIs(c))
+			return true;
+		return this.nextCell.nextCellsContains(c);
+	}
+
+	private boolean nextCellIs(char c) {
+		if (null == this.nextCell)
+			return false;
+		return this.nextCell.is(c);
 	}
 
 	private boolean is(char c) {
